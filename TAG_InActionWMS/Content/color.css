@@ -1,0 +1,217 @@
+﻿body {
+    background-color: #f9f8f8;
+}
+
+.header {
+    background-color: #1D4E89;
+}
+
+    .header .navbar-nav > li > a {
+        color: #f9f8f8;
+    }
+
+    .header .navbar-nav > li:hover > a {
+        color: #322800;
+        background-color: #FBCA01;
+    }
+
+
+/*----------- B O T O N E S -------------- */
+.btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary.focus[disabled],
+fieldset[disabled] .btn-primary.focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary.active[disabled],
+fieldset[disabled] .btn-primary.active,
+.btn-primary.disabled:active:hover,
+.btn-primary[disabled]:active:hover,
+fieldset[disabled] .btn-primary:active:hover {
+    background-color: #FBCA01;
+    border-color: #E2B601;
+    color: #322800 !important;
+}
+
+    .btn-primary:hover {
+        background-color: #E1B500;
+        border-color: #C8A101;
+        color: #4B3C00;
+    }
+
+    .btn-primary:active,
+    .btn-primary.active,
+    .open > .dropdown-toggle.btn-primary,
+    .btn-primary:focus,
+    .btn-primary.focus,
+    .btn-primary:active:hover,
+    .btn-primary.active:hover,
+    .open > .dropdown-toggle.btn-primary:hover,
+    .btn-primary:active:focus,
+    .btn-primary.active:focus,
+    .open > .dropdown-toggle.btn-primary:focus,
+    .btn-primary.focus:active,
+    .btn-primary.active.focus,
+    .open > .dropdown-toggle.btn-primary.focus {
+        background-color: #AF8D00;
+        border-color: #AF8D01;
+        color: #4B3C00;
+    }
+
+/*------------- P A N E L ---------------- */
+.panel-primary {
+    border-color: #039DD4;
+}
+
+    .panel-primary > .panel-heading {
+        color: #fff;
+        background-color: #03ACE9;
+        border-color: #03ACE9;
+    }
+
+/*---------- C O M B O B O X ------------- */
+.RadComboBox_Bootstrap .rcbInputCell,
+.RadComboBox_Bootstrap .rcbArrowCell {
+    border-color: #ccc !important;
+}
+
+.RadComboBoxDropDown_Bootstrap .rcbHovered,
+.RadComboBoxDropDown_Bootstrap .rcbCheckAllItemsHovered {
+    background-color: #9E9E9E !important;
+    color: #F9F9F9 !important;
+}
+
+/*---------- C A L E N D A R ------------- */
+.RadCalendar_Bootstrap .rcMain .rcRow .rcSelected a {
+    background-color: #FBCA01 !important;
+    border-color: #E2B601 !important;
+    color: #322800 !important;
+}
+
+/*-------------- G R I D ----------------- */
+.RadGrid_Bootstrap .rgGroupPanel,
+.RadGrid_Bootstrap .rgHeader,
+.RadGrid_Bootstrap .rgCommandRow,
+.RadGrid_Bootstrap th.rgResizeCol,
+.RadGrid_Bootstrap .rgHeaderWrapper,
+.RadGrid_Bootstrap .rgPagerCell,
+.RadGrid_Bootstrap .rgAltRow > td,
+.RadGrid_Bootstrap .rgFooter td {
+    background-color: #EEEEEE;
+}
+
+.RadGrid_Bootstrap .rgSorted,
+.RadGrid_Bootstrap .rgAltRow .rgSorted {
+    background-color: #D0D0D0 !important;
+}
+
+.RadGrid_Bootstrap .rgSelectedRow > td,
+.RadGrid_Bootstrap .rgSelectedRow > .rgSorted {
+    color: #F9F8F8 !important;
+    background-color: #9E9E9E !important;
+}
+
+.RadGrid .rgFilterRow > td {
+    background-color: #fff !important;
+}
+
+.rmLink.rmFocused {
+    background-color: #9E9E9E !important;
+    color: #fff !important;
+}
+
+/*-------------- L I S T ----------------- */
+.RadListBox_Bootstrap .rlbItem.rlbSelected {
+    color: #000 !important;
+    background-color: #FBCA01 !important;
+}
+
+/*----------- N A V B A R ---------------- */
+
+.navbar-default .navbar-nav .dropdown-menu,
+.navbar-default .navbar-nav .open .dropdown-menu {
+    color: #000;
+    background-color: #FBCA01;
+    border-top: 1px solid #AF8D01;
+}
+
+.navbar-inverse {
+    background-color: none;
+}
+
+    /*.navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:focus,
+    .navbar-inverse .navbar-nav > .open > a:hover {
+        background-color: #E1B500;
+        color: #322800;
+    }*/
+
+    .navbar-inverse .navbar-collapse,
+    .navbar-inverse .navbar-form,
+    .navbar-inverse .navbar-toggle {
+        border-color: #102A4A;
+    }
+
+        .navbar-inverse .navbar-toggle:hover,
+        .navbar-inverse .navbar-toggle:focus {
+            background-color: #102A4A;
+        }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #322800;
+    }
+
+        .navbar-inverse .navbar-nav > .open > a,
+        .navbar-inverse .navbar-nav > .open > a:focus,
+        .navbar-inverse .navbar-nav > .open > a:hover,
+        .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus,
+        .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+            color: #322800;
+            background-color: #E1B500;
+        }
+
+/*.navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+        background-color: #E1B500;
+    }*/
+
+/* Es el límite para mostrar el menú al pasar el cursor, un tamaño inferior oculta el menu*/
+@media screen and (min-width:768px) {
+    .navbar-default .navbar-nav .dropdown-menu,
+    .navbar-default .navbar-nav .open .dropdown-menu {
+        color: #000;
+        background-color: #fff;
+    }
+
+    .navbar-default .navbar-nav .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
+    .navbar-default .navbar-nav .dropdown-menu {
+        color: #000;
+    }
+
+        .navbar-default .navbar-nav .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .dropdown-menu > li > a:focus,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+            color: #f9f8f8;
+            background-color: #03ACE9;
+        }
+
+        .navbar-default .navbar-nav .dropdown-menu .divider,
+        .navbar-default .navbar-nav .open .dropdown-menu .divider {
+            background-color: #E5E5E5;
+        }
+}

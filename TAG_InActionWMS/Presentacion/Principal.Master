@@ -1,0 +1,345 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Principal.Master.cs" Inherits="TREMEC_EtiquetaInventario_WS.Presentacion.Principal" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%= Page.Title %> - TREMEC Etiquetado Producción</title>
+    <script src="../Scripts/jquery-3.3.1.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="../Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/glyphicons.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/submenu.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/sticky-footer.css" rel="stylesheet" type="text/css" />
+    <%--<link href="../img/logo_cliente.png" rel="shortcut icon" type="image/x-icon" />--%>
+    <%--<link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />--%>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    <script>
+        $(document).ready(function () {
+            //Inicializa todas las alertas
+            $('#AlertQuestion,#AlertError,#AlertSuccess').modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: false
+            });
+            //Asigna evento al mostrarse una alerta
+            $('#AlertQuestion,#AlertError,#AlertSuccess').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var whatever = document.getElementById(button[0].id).getAttribute('data-whatever');
+                $(this).find('.alert-title').html(whatever);
+            });
+            //Asigna el foco al botón aceptar de los modals Error y Success al mostrarse una alerta
+            $('#AlertError,#AlertSuccess').on('shown.bs.modal', function (event) {
+                var id = $(event.relatedTarget)[0].id + "Modal";
+                $('#' + id).focus();
+            });
+        });
+
+        //Inicializa todos los tooltip y popover
+        $(document).popover({
+            selector: '[data-toggle="popover"]',
+            delay: 500,
+            trigger: 'hover'
+        });
+        $(document).tooltip({
+            selector: '[data-toggle="tooltip"]',
+            delay: 500,
+            trigger: 'hover'
+        });
+
+        function alertQuestion(mensaje, element) {
+            if (element.href.length > 0) {
+                document.getElementById('btnOk').setAttribute('onclick', element.href);
+                document.getElementById('btnQuestion').setAttribute('data-whatever', mensaje);
+                document.getElementById('btnQuestion').click();
+            }
+        }
+
+        function onRequestStart(sender, args) {
+            if (args.get_eventTarget().indexOf("btnExcel") >= 0) {
+                args.set_enableAjax(false);
+            }
+            else if (args.get_eventTarget().indexOf("btnPdf") >= 0) {
+                args.set_enableAjax(false);
+            }
+        }
+
+        function disableBtn(button) {
+            button.removeAttribute('href');
+            button.setAttribute('disabled', 'disabled');
+        }
+
+        function enableBtn(button) {
+            var uniqueId = button.id.replace(/_/g, "$");
+            button.setAttribute('href', "javascript:__doPostBack('" + uniqueId + "','');");
+            button.removeAttribute('disabled', 'disabled');
+        }
+
+        function asignarClases(div, i, error) {
+            if (error != null)
+                if (error) {
+                    if (div != null)
+                        div.className = "has-error";
+                    if (i != null)
+                        i.className = "form-control-feedback glyphicon glyphicons-remove";
+                }
+                else {
+                    if (div != null)
+                        div.className = "has-success";
+                    if (i != null)
+                        i.className = "form-control-feedback glyphicon glyphicons-ok";
+                }
+        }
+
+        function limpiarClases(div, i) {
+            if (div != null)
+                div.className = "";
+            if (i != null)
+                i.className = "";
+        }
+
+        function Filter_Click(sender, args) {
+            /* Muestra / Oculta la fila de filtros en un RadGrid específico
+
+            Se ejecuta desde el botón Filtrar de cualquier RadGrid, recibe el grid en el sender 
+            y busca el atributo GID (asignado en el evento PreRender) lo que permite la busqueda 
+            de dicho grid en la página actual desde cualquier página. */
+
+            var gridClientID = sender.getAttribute("GID");
+            var grid = $find(gridClientID);
+            if (grid == null)
+                return;
+            var masterTable = grid.get_masterTableView();
+            if (masterTable.get_tableFilterRow().style.display == "none")
+                masterTable.showFilterItem();
+            else
+                masterTable.hideFilterItem();
+        }
+
+        //Eventos globales para la estandarización de los grids
+        function RadGrid_GridCreated(sender, args) {
+            var masterTable = sender.get_masterTableView();
+            var columns = masterTable.get_columns();
+            for (var i = 0; i < columns.length; i++)
+                if (columns[i].get_filterFunction() != "NoFilter")
+                    return;
+
+            masterTable.hideFilterItem();
+        }
+
+        var radGrid1Selected = {};
+        function RadGrid_RowSelectedDeselected(sender, args) {
+            var keyName = args.get_tableView().get_clientDataKeyNames()[0];
+            var id = args.getDataKeyValue(keyName);
+            var checkedRows = sender.get_masterTableView().get_selectedItems();
+            if (checkedRows.length > 0)
+                radGrid1Selected[sender.ClientID + "_" + id] = true;
+            else
+                radGrid1Selected[sender.ClientID + "_" + id] = null;
+        }
+
+        function RadGrid_RowCreated(sender, args) {
+            var keyName = args.get_tableView().get_clientDataKeyNames()[0];
+            var id = args.getDataKeyValue(keyName);
+            if (radGrid1Selected[sender.ClientID + "_" + id])
+                args.get_gridDataItem().set_selected(true);
+        }
+
+        function RadGrid_RowSelected(sender, args) {
+            var keyName = args.get_tableView().get_clientDataKeyNames()[0];
+            var id = args.getDataKeyValue(keyName);
+            if (!radGrid1Selected[sender.ClientID + "_" + id])
+                radGrid1Selected[sender.ClientID + "_" + id] = true;
+        }
+
+        function RadGrid_RowDeselected(sender, args) {
+            var keyName = args.get_tableView().get_clientDataKeyNames()[0];
+            var id = args.getDataKeyValue(keyName);
+            if (radGrid1Selected[sender.ClientID + "_" + id])
+                radGrid1Selected[sender.ClientID + "_" + id] = null;
+        }
+
+        //Expresiones regulares para validar texto
+        function esTexto(value) {
+            if (/^([A-z ÑñÁáÉéÍíÓóÚúÜü])+$/.test(value))
+                return true;
+            return false;
+        }
+
+        function esCorreo(value) {
+            if (/^[\w\.\-]+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]{1,})*(\.[a-zA-Z]{2,3}){1,2}$/.test(value))
+                return true;
+            return false;
+        }
+
+        function esNumDecimal(value) {
+           // if (/^[0-9]*$/.test(value))
+            if (/^[0-9]{0,9}(\.[0-9]{0,5})?$/.test(value))
+                 return true;
+
+            return false;
+        }
+
+        function esNum(value) {
+            //if (/\d+$/.test(value))
+            if (/^[0-9]*$/.test(value))
+                return true;
+            return false;
+        }
+
+        function esTextNum(value) {
+            if (/^([A-z ÑñÁáÉéÍíÓóÚúÜü\d])+$/.test(value))
+                return true;
+            return false;
+        }
+
+        function esCustom(value) {
+            if (/^([A-z ÑñÁáÉéÍíÓóÚúÜü.-\d])+$/.test(value))
+                return true;
+            return false;
+        }
+
+        function esSpecial(value) {
+            if (/^([A-z ÑñÁáÉéÍíÓóÚúÜü.+/\-\d])+$/.test(value))
+                return true;
+            return false;
+        }
+
+        function esIp(value) {
+            if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(value))
+                return true;
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div id="NavMenu" class="navbar navbar-default navbar-inverse header" runat="server">
+        <div class="container-fluid">
+            <!-- Marca y menú se agrupan para una mejor visualización en dispositivos móbiles -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBarCollapseIndar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href='Default.aspx'>
+                    <img src='../img/dataware_logo.png' />
+                </a>
+            </div>
+            <div id="navBarCollapseIndar" runat="server" class="collapse navbar-collapse">
+            </div>
+        </div>
+    </div>
+    <form runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:ContentPlaceHolder ID="ContentSection" runat="server"></asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ScriptSection" runat="server"></asp:ContentPlaceHolder>
+        <!-- Globalizacion de los controles de carga para acceder desde cualquier pagina -->
+        <telerik:RadAjaxLoadingPanel ID="LoadingPanel" runat="server" Skin="" AnimationDuration="200" ZIndex="1000">
+            <div class="RadAjax RadAjax_Default">
+                <div class="raDiv">
+                </div>
+                <div class="raColor raTransp" style="background-color: white; vertical-align: middle;">
+                    <span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
+                    <img alt="Cargando..." src="../img/refresh.gif" style="border: 0px; max-height: 100px;" />
+                </div>
+            </div>
+        </telerik:RadAjaxLoadingPanel>
+        <telerik:RadAjaxLoadingPanel ID="LoadingModal" runat="server" Skin="" AnimationDuration="200" ZIndex="2000">
+            <div class="RadAjax RadAjax_Default">
+                <div class="raDiv">
+                </div>
+                <div class="raColor raTransp" style="background-color: white; vertical-align: middle; border-bottom: 1px solid rgba(0, 0, 0, .2); border-radius: 6px;">
+                    <span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
+                    <img alt="Cargando..." src="../img/refresh.gif" style="border: 0px; max-height: 100px;" />
+                </div>
+            </div>
+        </telerik:RadAjaxLoadingPanel>
+        <telerik:RadAjaxLoadingPanel ID="LoadingEmpty" runat="server" Skin="">
+            <div class="RadAjax RadAjax_Default">
+                <div class="raDiv">
+                </div>
+                <div class="raColor raTransp" style="background-color: white; vertical-align: middle; border-bottom: 1px solid rgba(0, 0, 0, .2); border-radius: 6px;">
+                    <span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
+                </div>
+            </div>
+        </telerik:RadAjaxLoadingPanel>
+        <telerik:RadAjaxLoadingPanel ID="LoadingTransparent" runat="server" Skin="" AnimationDuration="200" ZIndex="1050" Transparency="1" Style="cursor: not-allowed;">
+            <div class="raDiv">
+            </div>
+            <div class="raColor raTransp" style="vertical-align: middle; middle; height: 42px;">
+                <span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
+                <img alt="Cargando..." src="../img/loading.gif" style="border: 0px; max-height: 18px;" />
+            </div>
+        </telerik:RadAjaxLoadingPanel>
+    </form>
+    <footer class="footer">
+        <div class="container">
+            <h6 class="text-muted text-center">Etiquetado Producción by DataWare &copy; <%: DateTime.Now.Year %>. Todos los derechos reservados.
+                <br />
+                Se prohibe cualquier reproducción total o parcial de este contenido sin autorización por escrito de su titular. 
+            </h6>
+        </div>
+    </footer>
+    <div id="txtDebug" runat="server" class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12" style="position: absolute; bottom: 0;">
+        <div class="alert alert-danger text-center" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <asp:Label ID="txtBdName" runat="server" CssClass="small" />
+        </div>
+    </div>
+    <button id="btnQuestion" type="button" data-toggle="modal" data-target="#AlertQuestion" style="display: none;"></button>
+    <div class="modal fade" id="AlertQuestion" tabindex="-1" role="dialog" style="outline: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="alert alert-info text-center" style="-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5); box-shadow: 0 5px 15px rgba(0, 0, 0, .5);">
+                <br />
+                <span class="glyphicon glyphicons-question-sign ico"></span>
+                <br />
+                <br />
+                <p class="alert-title"></p>
+                <hr />
+                <a id="btnOk" class="btn btn-info" data-dismiss="modal">Aceptar</a>
+                <a id="btnCancel" class="btn btn-info" data-dismiss="modal">Cancelar</a>
+            </div>
+        </div>
+    </div>
+    <button id="btnError" type="button" data-toggle="modal" data-target="#AlertError" style="display: none;"></button>
+    <div class="modal fade" id="AlertError" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document" style="outline: none;">
+            <div class="alert alert-danger text-center" style="-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5); box-shadow: 0 5px 15px rgba(0, 0, 0, .5);">
+                <br />
+                <span class="glyphicon glyphicons-alert ico"></span>
+                <br />
+                <br />
+                <p class="alert-title"></p>
+                <hr />
+                <button id="btnErrorModal" type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+    <button id="btnSuccess" type="button" data-toggle="modal" data-target="#AlertSuccess" style="display: none;"></button>
+    <div class="modal fade" id="AlertSuccess" tabindex="-1" role="dialog" style="outline: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="alert alert-success text-center" style="-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5); box-shadow: 0 5px 15px rgba(0, 0, 0, .5);">
+                <br />
+                <span class="glyphicon glyphicons-thumbs-up ico"></span>
+                <br />
+                <br />
+                <p class="alert-title"></p>
+                <hr />
+                <button id="btnSuccesModal" type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+    <!-- Generated markup by the plugin -->
+    <div class="tooltip top" role="tooltip">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner"></div>
+    </div>
+</body>
+</html>

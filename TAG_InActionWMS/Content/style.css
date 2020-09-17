@@ -1,0 +1,691 @@
+﻿body {
+    background-color: #f9f8f8;
+    padding: 0 !important;
+}
+
+.background-login {
+    position: fixed;
+    background-image: url("../img/background-login.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: brightness(90%) blur(2px);
+    -webkit-filter: brightness(90%) blur(2px);
+    top: 0;
+}
+
+.login {
+    box-shadow: 5px 5px 20px 0px rgba(0,0,0, 1);
+    -moz-box-shadow: 5px 5px 20px 0px rgba(0,0,0, 1);
+    -webkit-box-shadow: 5px 5px 20px 0px rgba(0,0,0, 1);
+}
+
+.logo {
+    max-width: 100%;
+    max-height: 150px;
+}
+
+.header {
+    background-color: #03ACE9;
+}
+
+    .header .navbar-nav > li > a {
+        color: #f9f8f8;
+    }
+
+    .header .navbar-nav > li:hover > a {
+        /*color: #322800;*/
+        background-color: #039DD4;
+    }
+
+.navbar {
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 0;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.navbar-inverse {
+    background-color: none;
+}
+
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:focus,
+    .navbar-inverse .navbar-nav > .open > a:hover {
+        background-color: #038DBF;
+        /*color: #322800;*/
+    }
+
+    .navbar-inverse .navbar-collapse,
+    .navbar-inverse .navbar-form {
+        border-color: #039DD4;
+    }
+
+    .navbar-inverse .navbar-toggle:hover,
+    .navbar-inverse .navbar-toggle:focus {
+        background-color: #038DBF;
+    }
+
+    .navbar-inverse .navbar-toggle {
+        border-color: #038DBF;
+    }
+
+.navbar-brand {
+    padding: 0 !important;
+    margin: 0 !important;
+    /*line-height: 50px;*/
+}
+
+    .navbar-brand > img {
+        height: 50px;
+    }
+
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+}
+
+.btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary.focus[disabled],
+fieldset[disabled] .btn-primary.focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary.active[disabled],
+fieldset[disabled] .btn-primary.active,
+.btn-primary.disabled:active:hover,
+.btn-primary[disabled]:active:hover,
+fieldset[disabled] .btn-primary:active:hover {
+    background-color: #03ACE9;
+    border-color: #039DD4;
+    color: #fff !important;
+}
+
+    .btn-primary:hover {
+        background-color: #037EAA;
+        border-color: #026E95;
+        color: #f9f8f8;
+    }
+
+    .btn-primary:active,
+    .btn-primary.active,
+    .open > .dropdown-toggle.btn-primary,
+    .btn-primary:focus,
+    .btn-primary.focus,
+    .btn-primary:active:hover,
+    .btn-primary.active:hover,
+    .open > .dropdown-toggle.btn-primary:hover,
+    .btn-primary:active:focus,
+    .btn-primary.active:focus,
+    .open > .dropdown-toggle.btn-primary:focus,
+    .btn-primary.focus:active,
+    .btn-primary.active.focus,
+    .open > .dropdown-toggle.btn-primary.focus {
+        background-color: #024F6A;
+        border-color: #023F55;
+        color: #fff;
+    }
+
+
+.background-acercade {
+    position: fixed;
+    background-image: url("../img/acercade.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: brightness(90%) blur(2px);
+    -webkit-filter: brightness(90%) blur(2px);
+    top: 0;
+}
+
+.panel {
+    margin-bottom: 0 !important;
+    border-color: rgba(255,255,255,0.5);
+    overflow: hidden;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+    -moz-box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+}
+
+.panel-title {
+    font-size: 14px !important;
+}
+
+.panel-primary {
+    border-color: #03ACE9;
+    overflow: hidden;
+}
+
+    .panel-primary > .panel-heading {
+        color: #fff;
+        background-color: #03ACE9;
+        border-color: #03ACE9;
+    }
+
+.table-responsive {
+    overflow: hidden;
+    border: none;
+}
+
+.asp-label {
+    font-size: 12px !important;
+    margin: 5px 0px !important;
+}
+
+.label-data {
+    color: #E68D25;
+}
+
+.btn-sm, .btn-group-sm > .btn {
+    line-height: 1.5 !important;
+}
+
+.tooltip {
+    position: fixed !important;
+}
+
+.tooltip-inner {
+    max-width: 300px !important;
+}
+
+.ico {
+    font-size: 36px !important;
+}
+
+.RadComboBoxDropDown_Bootstrap .rcbHovered,
+.RadComboBoxDropDown_Bootstrap .rcbCheckAllItemsHovered {
+    background-color: #9E9E9E !important;
+    color: #F9F9F9 !important;
+}
+
+.RadComboBox_Bootstrap .rcbArrowCell a {
+    height: 28px !important;
+    background-position: -9px -60px !important;
+}
+
+.RadGrid .rgHeader,
+.RadGrid th.rgResizeCol {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.RadGrid .rgRow td,
+.RadGrid .rgAltRow td {
+    white-space: nowrap;
+}
+
+.RadGrid .rgFilterRow > td {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-right: 18px !important;
+    padding-left: 0px !important;
+    text-align: center !important;
+    border-left: 1px solid #ddd;
+    background-color: #fff !important;
+}
+
+.RadGrid_Bootstrap {
+    outline: none !important;
+    width: auto !important;
+}
+
+    .RadMenu_Bootstrap,
+    .RadInput_Bootstrap .riTextBox,
+    .RadComboBox_Bootstrap .rcbInput,
+    .RadGrid_Bootstrap .rgMasterTable,
+    .RadGrid_Bootstrap .rgDetailTable,
+    .RadGrid_Bootstrap .rgGroupPanel table,
+    .RadGrid_Bootstrap .rgCommandRow table,
+    .RadGrid_Bootstrap .rgEditForm table,
+    .RadGrid_Bootstrap .rgPager table,
+    .RadGrid_Bootstrap .rgPager table .Advanced,
+    .RadComboBoxDropDown_Bootstrap,
+    .popover, .tooltip,
+    .ruBrowse {
+        font-size: 12px !important;
+    }
+
+    .RadGrid_Bootstrap .rgFilter {
+        height: 28px !important;
+        /*background-position: -9px -4511px !important;*/
+        background-position: -16px -4511px !important;
+        width: 18px !important;
+        background-color: #fff !important;
+        border: none !important;
+        margin: 0px !important;
+    }
+
+    .RadGrid_Bootstrap .rgPagerCell .rgPagerLabel {
+        padding: 0px 7px !important;
+        line-height: 30px !important;
+    }
+
+    .RadGrid_Bootstrap .rgRow > td[align="center"],
+    .RadGrid_Bootstrap .rgAltRow > td[align="center"],
+    .RadGrid_Bootstrap .rgEditRow > td[align="center"] {
+        padding: 0 !important;
+    }
+
+    .RadGrid_Bootstrap .rgRow > td,
+    .RadGrid_Bootstrap .rgAltRow > td,
+    .RadGrid_Bootstrap .rgEditRow > td {
+        padding: 6px 7px !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .RadGrid_Bootstrap .rgGroupPanel {
+        padding: 0 !important;
+    }
+
+        .RadGrid_Bootstrap .rgSortAsc,
+        .RadGrid_Bootstrap .rgGroupPanel .rgSortAsc {
+            background-position: -15px -11px !important;
+        }
+
+        .RadGrid_Bootstrap .rgSortDesc,
+        .RadGrid_Bootstrap .rgGroupPanel .rgSortDesc {
+            background-position: -15px -61px !important;
+        }
+
+    .RadGrid_Bootstrap .rgGroupItem {
+        padding: 0 0 0 7px !important;
+    }
+
+    .RadGrid_Bootstrap .rgUngroup {
+        background-position: -15px -3361px !important;
+    }
+
+    .RadGrid_Bootstrap .rgSave,
+    .RadGrid_Bootstrap .rgUpdate,
+    .RadGrid_Bootstrap .rgCancel,
+    .RadGrid_Bootstrap .rgEdit,
+    .RadGrid_Bootstrap .rgDel,
+    .RadGrid_Bootstrap .rgExpand,
+    .RadGrid_Bootstrap .rgCollapse,
+    .RadGrid_Bootstrap .rgFilter,
+    .RadGrid_Bootstrap .rgAdd,
+    .RadGrid_Bootstrap .rgRefresh,
+    .RadGrid_Bootstrap .rgSortAsc,
+    .RadGrid_Bootstrap .rgSortDesc,
+    .RadGrid_Bootstrap .rgUngroup,
+    .RadGrid_Bootstrap .rgPagePrev,
+    .RadGrid_Bootstrap .rgPageNext,
+    .RadGrid_Bootstrap .rgPageFirst,
+    .RadGrid_Bootstrap .rgPageLast,
+    .RadGrid_Bootstrap .rgExpXLS,
+    .RadGrid_Bootstrap .rgExpDOC,
+    .RadGrid_Bootstrap .rgExpPDF,
+    .RadGrid_Bootstrap .rgExpCSV,
+    .RadGrid_Bootstrap .rgPrev span,
+    .RadGrid_Bootstrap .rgNext span {
+        width: 20px !important;
+        height: 29px !important;
+    }
+
+.RadUploadProgressArea {
+    width: auto !important;
+}
+
+.RadUploadProgressArea_Bootstrap {
+    font-size: 12px !important;
+}
+
+.RadComboBox_Bootstrap .rcbInputCell,
+.RadComboBox_Bootstrap .rcbArrowCell {
+    height: 30px !important;
+    border-color: #ccc !important;
+}
+
+.RadComboBox_Bootstrap .rcbFocused {
+    border-radius: 0 !important;
+}
+
+.input-group .RadComboBox_Bootstrap .rcbInputCell {
+    border-radius: 0 !important;
+}
+
+
+.RadPicker {
+    width: auto !important;
+}
+
+.RadPicker .rcTable{
+    width: 100% !important;
+}
+
+.RadPicker_Bootstrap .rcCalPopup,
+.RadPicker_Bootstrap .rcTimePopup {
+    height: 28px !important;
+    background-position: -9px -4211px !important;
+}
+
+    .RadPicker_Bootstrap .rcCalPopup:hover {
+        background-position: -59px -4211px !important;
+    }
+
+.rgFilterRow .RadPicker_Bootstrap .rcCalPopup,
+.rgFilterRow .RadPicker_Bootstrap .rcTimePopup {
+    height: 28px !important;
+    /*background-position: -9px -4211px !important;*/
+    background-position: -16px -4211px !important;
+    border: none !important;
+    width: 18px !important;
+}
+
+    .rgFilterRow .RadPicker_Bootstrap .rcCalPopup:hover {
+        /*background-position: -59px -4211px !important;*/
+        background-position: -66px -4211px !important;
+        background-color: transparent !important;
+    }
+
+/*----------- Colores del Calendario ----- */
+.RadCalendar_Bootstrap .rcMain .rcRow .rcSelected a {
+    background-color: #03ACE9 !important;
+    border-color: #039DD4 !important;
+    color: #fff !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-top: 4px !important;
+}
+
+.rgHeader input[type="checkbox"],
+.rgHeader input[type="radio"] {
+    margin-top: 0px !important;
+}
+
+.rgCommandCell {
+    padding: 5px !important;
+}
+
+.form-control-feedback {
+    line-height: 30px !important;
+    top: 0 !important;
+}
+
+.rgFilterBox {
+    height: 28px !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+.rgFilterRow .RadInput_Bootstrap.riSingle .riTextBox {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.RadInput_Bootstrap.riSingle .riTextBox {
+    height: 30px !important;
+}
+
+.rgFilterRow RadInput_Bootstrap.riSingle .riTextBox {
+    height: 28px !important;
+}
+
+.RadGrid .rgPager .RadInput {
+    width: 50px !important;
+}
+
+.multiline {
+    resize: vertical;
+    min-height: 30px;
+}
+
+/*----------- Colores del Grid ----------- */
+.RadGrid_Bootstrap .rgGroupPanel,
+.RadGrid_Bootstrap .rgHeader,
+.RadGrid_Bootstrap .rgCommandRow,
+.RadGrid_Bootstrap th.rgResizeCol,
+.RadGrid_Bootstrap .rgHeaderWrapper,
+.RadGrid_Bootstrap .rgPagerCell,
+.RadGrid_Bootstrap .rgAltRow > td,
+.RadGrid_Bootstrap .rgFooter td {
+    background-color: #EEEEEE !important;
+}
+
+.RadGrid_Bootstrap .rgSorted,
+.RadGrid_Bootstrap .rgAltRow .rgSorted {
+    background-color: #D0D0D0 !important;
+}
+
+.RadGrid_Bootstrap .rgSelectedRow > td,
+.RadGrid_Bootstrap .rgSelectedRow > .rgSorted {
+    color: #F9F8F8 !important;
+    background-color: #9E9E9E !important;
+}
+
+.RadGrid_Bootstrap .rgFilter:hover {
+    background-position: -66px -4511px !important;
+}
+
+.RadGrid_Bootstrap .rgFiltered,
+.RadGrid_Bootstrap .rgFiltered:hover {
+    background-position: -66px -4511px !important;
+}
+
+.rmLink.rmFocused {
+    background-color: #9E9E9E !important;
+    color: #fff !important;
+}
+
+.form-control[disabled],
+fieldset[disabled] .form-control {
+    cursor: not-allowed !important;
+}
+
+.checkBox_custom {
+    color: #555555 !important;
+    display: inline-block !important;
+    padding: 5px !important;
+    width: 100% !important;
+    border-radius: 0px 3px 3px 0px !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border: 1px solid rgb(204, 204, 204) !important;
+    box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    cursor: pointer !important;
+    font-style: italic !important;
+}
+
+.RadButton .rbSecondary,
+.RadButton .rbPrimary {
+    font-size: 12px !important;
+    padding: 0 !important;
+}
+
+span.RadButton_Bootstrap .rbPrimaryIcon,
+span.RadButton_Bootstrap .rbSecondaryIcon {
+    top: 13px !important;
+    overflow: visible !important;
+}
+
+.rbToggleButton {
+    min-height: 18px !important;
+}
+
+/*-------------- M O D A L --------------- */
+
+.modal {
+    text-align: center !important;
+    padding: 0 !important;
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+    .modal:before {
+        content: '' !important;
+        display: inline-block !important;
+        height: 100% !important;
+        vertical-align: middle !important;
+        margin-right: -4px !important;
+    }
+
+.modal-dialog {
+    display: inline-block !important;
+    text-align: left !important;
+    vertical-align: middle !important;
+    margin: auto !important;
+}
+
+.modal-backdrop {
+    visibility: hidden !important;
+}
+
+/*---------------------------------------- */
+
+.color-success {
+    background-color: #5CB85C !important;
+    color: #fff !important;
+}
+
+.color-success-hover {
+    background-color: #449d44 !important;
+    color: #fff !important;
+}
+
+.color-danger-hover {
+    background-color: #D9534F !important;
+    color: white !important;
+}
+
+.width100 {
+    width: 100% !important;
+}
+
+input, button, select, textarea {
+    outline: none !important;
+}
+
+.ruBrowse {
+    width: auto !important;
+}
+
+.upload {
+    width: auto !important;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.RadUpload_Bootstrap .ruButton {
+    height: 30px !important;
+}
+
+.RadUpload .ruInputs li {
+    display: none;
+}
+
+    .RadUpload .ruInputs li:last-child {
+        text-align: center;
+        display: block;
+    }
+
+/*-------------- L I S T ----------------- */
+.RadListBox_Bootstrap {
+    font-size: 12px !important;
+}
+
+    .RadListBox_Bootstrap .rlbItem.rlbSelected {
+        color: #fff !important;
+        background-color: #03ACE9 !important;
+        color: #000 !important;
+    }
+
+    .RadListBox_Bootstrap .rlbEmptyMessage {
+        width: 100% !important;
+        top: 0 !important;
+        left: 0 !important;
+    }
+
+.navbar-default .navbar-nav .dropdown-menu,
+.navbar-default .navbar-nav .open .dropdown-menu {
+    color: #F9F8F8;
+    background-color: #039DD4;
+    border-top: 1px solid #1186B8;
+}
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #f9f8f8;
+    }
+
+        .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+            color: #f9f8f8;
+            background-color: #038DBF;
+        }
+
+.navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+    background-color: #038DBF;
+}
+
+table caption {
+    padding: 0;
+}
+
+.RadTabStripTop_Bootstrap .rtsLevel1 .rtsUL {
+    width: 100%;
+}
+
+/* En este límite se aplican las siguientes clases */
+@media screen and (min-width:768px) {
+    .navbar-default .navbar-nav .dropdown-menu,
+    .navbar-default .navbar-nav .open .dropdown-menu {
+        color: #000;
+        background-color: #FFF;
+    }
+
+    .navbar-default .navbar-nav .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #000;
+    }
+
+        .navbar-default .navbar-nav .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .dropdown-menu > li > a:focus,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+            color: #f9f8f8;
+            background-color: #03ACE9;
+        }
+
+    .navbar-default .navbar-nav .dropdown-menu .divider,
+    .navbar-default .navbar-nav .open .dropdown-menu .divider {
+        background-color: #E5E5E5;
+    }
+
+    .section-white {
+        padding: 1.5em 0;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        max-width: 920px;
+    }
+}
